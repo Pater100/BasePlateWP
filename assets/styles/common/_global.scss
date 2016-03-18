@@ -1,1 +1,9 @@
+$test: red;
 
+h1{
+  color:red;
+}
+
+.fn{
+  color:$test;
+}
