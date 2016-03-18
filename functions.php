@@ -14,7 +14,7 @@ $sage_includes = [
   '/lib/shortcodes/_require.php',    // shotcodes
   '/lib/widgets/_require.php',    // shotcodes
   'lib/assets.php',    // Scripts and stylesheets
-  //'lib/extras.php',    // Custom functions
+  'lib/extras.php',    // Custom functions
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/customizer.php' // Theme customizer
