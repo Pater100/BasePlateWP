@@ -10,11 +10,13 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
+  '/lib/wp_bootstrap_navwalker.php',    // navwalker
+  '/lib/shortcodes/_require.php',    // shotcodes
+  '/lib/widgets/_require.php',    // shotcodes
   'lib/assets.php',    // Scripts and stylesheets
-  'lib/extras.php',    // Custom functions
+  //'lib/extras.php',    // Custom functions
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
-  'lib/wrapper.php',   // Theme wrapper class
   'lib/customizer.php' // Theme customizer
 ];
 

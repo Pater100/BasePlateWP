@@ -1,14 +1,29 @@
-<?php get_template_part('templates/page', 'header'); ?>
-
-<?php if (!have_posts()) : ?>
-  <div class="alert alert-warning">
-    <?php _e('Sorry, no results were found.', 'sage'); ?>
-  </div>
-  <?php get_search_form(); ?>
-<?php endif; ?>
-
-<?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/content', get_post_type() != 'post' ? get_post_type() : get_post_format()); ?>
-<?php endwhile; ?>
-
-<?php the_posts_navigation(); ?>
+<?php get_header(); ?>
+<div class="wrap">
+        <div id="slider-holder" class="row">
+            <div class="col-sm-12">
+                <div id="slider">
+                    <?php
+                            if ( have_posts() ) {
+                                while ( have_posts() ) {
+                                the_post();
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="holder row">
+            <div  class="col-sm-10 col-xs-offset-1 col-xs-10">
+                <div id="intro" class="row">
+                    <div class="col-sm-10">
+                        <h1><?php the_title(); ?></h1>
+                        <?php the_content(); ?>
+                        <?php
+                                } // end while
+                            } // end if
+                        ?>
+                    </div>
+                </div><!-- /intro -->
+            </div><!-- /col -->
+        </div><!--/holder -->
+</div><!-- /wrap -->
+<?php get_footer(); ?>
