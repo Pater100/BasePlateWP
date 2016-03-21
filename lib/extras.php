@@ -16,9 +16,6 @@ function body_class($classes) {
   }
 
   // Add class if sidebar is active
-  if (Setup\display_sidebar()) {
-    $classes[] = 'sidebar-primary';
-  }
 
   return $classes;
 }
