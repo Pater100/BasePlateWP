@@ -175,3 +175,26 @@ function assets() {
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+/* security */
+function my_htaccess_contents( $rules )
+{
+    // echo '<pre>'. $rules .'</pre>';
+    // exit();
+    return $rules . "
+#Stop spam attack logins and comments
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteCond %{REQUEST_METHOD} POST
+	RewriteCond %{REQUEST_URI} .(wp-comments-post|wp-login)\.php*
+	RewriteCond %{HTTP_REFERER} !.*example.com.* [OR]
+	RewriteCond %{HTTP_USER_AGENT} ^$
+	RewriteRule (.*) http://%{REMOTE_ADDR}/$1 [R=301,L]
+</ifModule>
+
+<Files 'xmlrpc.php'>
+Order Allow,Deny
+deny from all
+</Files>\n";
+}
+add_filter('mod_rewrite_rules', 'my_htaccess_contents');
