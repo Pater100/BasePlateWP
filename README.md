@@ -7,3 +7,6 @@ For using the template:
 2.  npm install --save-dev gulp
 3.	bower install
 4.	gulp
+
+Extra lines to the .htacces file are added for an extra layer of security.
+These block common Brute-Force Attacks.
