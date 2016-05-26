@@ -3,7 +3,7 @@
     <head>
         <meta charset="<?php bloginfo( 'charset' ) ?>">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title><?php bloginfo('name'); ?><?php echo "&nbsp;| ".the_title( $before, $after, $echo ); ?></title>
+        <title><?php wp_title( ' - ', 1, 'right' ); bloginfo( 'name' ); ?></title>
         <meta name="description" content="<?php bloginfo('description'); ?>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">

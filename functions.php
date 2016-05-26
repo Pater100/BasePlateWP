@@ -18,6 +18,7 @@ $sage_includes = [
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/customizer.php' // Theme customizer
+  'lib/sidebars.php' // Theme sidebars
 ];
 
 foreach ($sage_includes as $file) {
