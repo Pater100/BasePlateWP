@@ -17,7 +17,7 @@ $sage_includes = [
   'lib/extras.php',    // Custom functions
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
-  'lib/customizer.php' // Theme customizer
+  'lib/customizer.php', // Theme customizer
   'lib/sidebars.php' // Theme sidebars
 ];
 
