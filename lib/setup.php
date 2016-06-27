@@ -90,40 +90,6 @@ function add_featured_image_body_class( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'add_featured_image_body_class' );
-
-class Walker_Nav_Menu_Dropdown extends Walker_Nav_Menu {
-	function start_lvl(&$output, $depth){
-		$indent = str_repeat("\t", $depth); // don't output children opening tag (`<ul>`)
-	}
-
-	function end_lvl(&$output, $depth){
-		$indent = str_repeat("\t", $depth); // don't output children closing tag
-	}
-
-	/**
-	* Start the element output.
-	*
-	* @param  string $output Passed by reference. Used to append additional content.
-	* @param  object $item   Menu item data object.
-	* @param  int $depth     Depth of menu item. May be used for padding.
-	* @param  array $args    Additional strings.
-	* @return void
-	*/
-	function start_el(&$output, $item, $depth, $args) {
-
-        $selected = '';
-        if($item->current == 1){
-            $selected = ' selected';
-        }
-
- 		$url = '#' !== $item->url ? $item->url : '';
- 		$output .= '<option value="' . $url . '"'. $selected .'>' . $item->title;
-	}
-
-	function end_el(&$output, $item, $depth){
-		$output .= "</option>\n"; // replace closing </li> with the option tag
-	}
-}
 /**
  * Theme assets
  */
@@ -139,21 +105,13 @@ function assets() {
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
 /* security */
+
 function my_htaccess_contents( $rules )
 {
     // echo '<pre>'. $rules .'</pre>';
     // exit();
     return $rules . "
 #Stop spam attack logins and comments
-<IfModule mod_rewrite.c>
-	RewriteEngine On
-	RewriteCond %{REQUEST_METHOD} POST
-	RewriteCond %{REQUEST_URI} .(wp-comments-post|wp-login)\.php*
-	RewriteCond %{HTTP_REFERER} !.*example.com.* [OR]
-	RewriteCond %{HTTP_USER_AGENT} ^$
-	RewriteRule (.*) http://%{REMOTE_ADDR}/$1 [R=301,L]
-</ifModule>
-
 <Files 'xmlrpc.php'>
 Order Allow,Deny
 deny from all
